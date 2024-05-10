@@ -38,7 +38,7 @@ def visualize_point_cloud(points, normals):
     o3d.visualization.draw_geometries([point_cloud], point_show_normal=True)
 
 def main():
-    bin_path = 'path_to_your_kitti_file.bin'  # Update this path
+    bin_path = 'kitti_file.bin'  # Update this path depending on your file structure(best to put in /data folder)
     points = load_kitti_point_cloud(bin_path)
     pcl_point_cloud = create_pcl_point_cloud(points)
     
