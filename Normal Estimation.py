@@ -38,15 +38,15 @@ def visualize_point_cloud(points, normals):
     o3d.visualization.draw_geometries([point_cloud], point_show_normal=True)
 
 def main():
-    bin_path = 'kitti_file.bin'  # Update this path depending on your file structure(best to put in /data folder)
+    bin_path = 'path/to/your/kitti_file.bin'  # Update this path depending on your file structure
     points = load_kitti_point_cloud(bin_path)
     pcl_point_cloud = create_pcl_point_cloud(points)
     
     # Preprocess: Remove outliers
     filtered_cloud = remove_outliers(pcl_point_cloud)
     
-    # Compute normals
-    normals = compute_normals(filtered_cloud, radius=0.3)  # Adjust radius based on point cloud density
+    # Compute normals using a more appropriate radius based on the expected scale of objects in KITTI
+    normals = compute_normals(filtered_cloud, radius=0.3)  # Adjust the radius based on point cloud density
     
     # Extract points and normals for visualization
     filtered_points = np.array(filtered_cloud)
